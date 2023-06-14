@@ -10,6 +10,8 @@ export const Layout = () => {
               display: 'flex',
               listStyle: 'none',
               gap: '40px',
+              marginLeft: '200px',
+              fontSize: '32px',
             }}
           >
             <li>

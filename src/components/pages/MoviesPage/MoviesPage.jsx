@@ -1,38 +1,55 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-// import getTrending from '../../service/MovieService';
+import { MoviesList } from 'components/MoviesList/MoviesList';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { getSearches } from '../../service/MovieService';
 
 export const MoviesPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
+  const [query, setQuery] = useState('');
+  const params = searchParams.get('query') || '';
+  const location = useLocation;
 
   useEffect(() => {
+    if (!params) return;
     try {
-      const getMovies = async () => {
-        const { data } = await axios.get(
-          `https://api.themoviedb.org/3/trending/all/day?api_key=d36c76811afe64ae46b83ec8fd55864b`
-        );
-        const { results, id, title } = data;
-        setMovies(results);
-        console.log(id, title);
+      const getQuery = async params => {
+        const data = await getSearches(params);
+        setMovies(data.results);
       };
-      getMovies();
+      getQuery(params);
     } catch (error) {
       console.log('Error');
     }
-  }, []);
+  }, [params]);
 
-  const location = useLocation();
-  console.log('location', location);
+  const handleChange = e => {
+    setQuery(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (!query.trim()) {
+      return alert('There is no query');
+    }
+    setSearchParams({ query });
+    setQuery('');
+  };
+
   return (
-    <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      {movies.map(movie => (
-        <li key={movie.id}>
-          <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-            <h2>{movie.title}</h2>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <button type="submit">Search</button>
+        <input
+          placeholder="What do you want to find?"
+          name="query"
+          autoFocus
+          value={query}
+          onChange={handleChange}
+        />
+      </form>
+      <MoviesList movies={movies} location={location} />
+    </div>
   );
 };
