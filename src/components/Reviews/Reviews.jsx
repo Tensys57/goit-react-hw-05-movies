@@ -1,9 +1,9 @@
-import { getReviews } from 'components/service/MovieService';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Reviews = () => {
+import { getReviews } from 'components/service/MovieService';
+
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviewsInfo, setReviewsInfo] = useState([]);
   const Placeholder = "We don't have any reviews for this movie.";
@@ -36,3 +36,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

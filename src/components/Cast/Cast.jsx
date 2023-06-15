@@ -1,9 +1,9 @@
-import { getCast } from 'components/service/MovieService';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Cast = () => {
+import { getCast } from 'components/service/MovieService';
+
+const Cast = () => {
   const { movieId } = useParams();
   const [castInfo, setCastInfo] = useState(null);
   const imgPlaceholder =
@@ -44,3 +44,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast;

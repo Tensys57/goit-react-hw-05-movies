@@ -1,11 +1,11 @@
-import { MoviesList } from 'components/MoviesList/MoviesList';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
+
+import { MoviesList } from 'components/MoviesList/MoviesList';
 import { getSearches } from '../../service/MovieService';
 import css from './MoviesPage.module.css';
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
@@ -57,3 +57,5 @@ export const MoviesPage = () => {
     </div>
   );
 };
+
+export default MoviesPage;

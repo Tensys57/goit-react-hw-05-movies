@@ -1,9 +1,11 @@
+import { useState, useEffect } from 'react';
+import { Suspense } from 'react';
+
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import css from './HomePage.module.css';
-import { useState, useEffect } from 'react';
 import { getTrending } from '../../service/MovieService';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -24,3 +26,4 @@ export const HomePage = () => {
     </>
   );
 };
+export default HomePage;

@@ -1,7 +1,8 @@
+import { Suspense } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 import css from './Layout.module.css';
 
-export const Layout = () => {
+const Layout = () => {
   return (
     <>
       <header>
@@ -31,8 +32,12 @@ export const Layout = () => {
         </nav>
       </header>
       <div className={css.backdrop}>
-        <Outlet />
+        <Suspense fallback={<div>Loading page...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
     </>
   );
 };
+
+export default Layout;
