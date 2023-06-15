@@ -1,0 +1,11 @@
+.search {
+  font-size: 24px;
+  padding: 10px 10px;
+}
+
+.searchBtn {
+  font-size: 24px;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+}

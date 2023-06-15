@@ -21,15 +21,16 @@ export const Reviews = () => {
   }, [movieId]);
 
   if (!reviewsInfo) return;
+  console.log('reviewsInfo', reviewsInfo);
 
   return (
     <>
-      {!reviewsInfo && <p>{Placeholder}</p>}
+      {reviewsInfo.length === 0 && <p>{Placeholder}</p>}
       <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {reviewsInfo.map(review => (
           <li key={review.id}>
-            <h2>{review.author}</h2>
-            <p>Character: {review.content}</p>
+            <h2>Author: {review.author}</h2>
+            <p>{review.content}</p>
           </li>
         ))}
       </ul>

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getSearches } from '../../service/MovieService';
+import css from './MoviesPage.module.css';
 
 export const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -40,13 +41,16 @@ export const MoviesPage = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <button type="submit">Search</button>
+        <button className={css.searchBtn} type="submit">
+          Search
+        </button>
         <input
           placeholder="What do you want to find?"
           name="query"
           autoFocus
           value={query}
           onChange={handleChange}
+          className={css.search}
         />
       </form>
       <MoviesList movies={movies} location={location} />

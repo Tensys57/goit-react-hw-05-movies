@@ -1,4 +1,5 @@
 import { MoviesList } from 'components/MoviesList/MoviesList';
+import css from './HomePage.module.css';
 import { useState, useEffect } from 'react';
 import { getTrending } from '../../service/MovieService';
 
@@ -18,7 +19,7 @@ export const HomePage = () => {
   }, []);
   return (
     <>
-      <h1>Trending today</h1>
+      <h1 className={css.title}>Trending today</h1>
       <MoviesList movies={movies} />;
     </>
   );

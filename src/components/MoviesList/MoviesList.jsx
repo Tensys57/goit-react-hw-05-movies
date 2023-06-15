@@ -1,10 +1,12 @@
-import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
+import { Link, useLocation } from 'react-router-dom';
+import css from './MoviesList.module.css';
 export const MoviesList = ({ movies }) => {
   const location = useLocation();
   return (
     <>
-      <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <ul className={css.moviesList}>
         {movies.map(movie => (
           <li key={movie.id}>
             <Link to={`/movies/${movie.id}`} state={location}>
@@ -15,4 +17,8 @@ export const MoviesList = ({ movies }) => {
       </ul>
     </>
   );
+};
+
+MoviesList.propTypes = {
+  movies: PropTypes.array.isRequired,
 };
