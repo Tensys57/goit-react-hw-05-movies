@@ -21,7 +21,6 @@ export const Reviews = () => {
   }, [movieId]);
 
   if (!reviewsInfo) return;
-  console.log('reviewsInfo', reviewsInfo);
 
   return (
     <>
