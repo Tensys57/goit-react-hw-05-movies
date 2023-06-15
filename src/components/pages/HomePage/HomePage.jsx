@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Suspense } from 'react';
 
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import css from './HomePage.module.css';

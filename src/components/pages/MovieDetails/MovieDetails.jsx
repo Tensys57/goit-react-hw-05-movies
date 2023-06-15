@@ -37,7 +37,7 @@ const MovieDetails = () => {
   return (
     <>
       <div className={css.container}>
-        <Link to={backLinkHref.current}>Go back</Link>;
+        <Link to={backLinkHref.current}>Go back</Link>
         <img
           src={
             movieInfo.poster_path
@@ -46,6 +46,7 @@ const MovieDetails = () => {
           }
           alt={movieInfo.title}
           width="200px"
+          height="300px"
         />
         <div className={css.details}>
           <h2>{movieInfo.title}</h2>

@@ -34,7 +34,8 @@ const Cast = () => {
                   : imgPlaceholder
               }
               alt={actor.name}
-              width="100px"
+              width="130px"
+              height="180px"
             />
             <h2>{actor.name}</h2>
             <h4>Character: {actor.character}</h4>
